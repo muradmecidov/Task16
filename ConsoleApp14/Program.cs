@@ -12,6 +12,7 @@ namespace ConsoleApp14
         static void Main(string[] args)
         {
 
+            #region Task1
             //Task 1
             //string path = @"C:\Users\murad\Desktop\Models\Data";
             string path1 = @"C:\Users\murad\Desktop\Models\Data\jsonData.json";
@@ -40,7 +41,8 @@ namespace ConsoleApp14
             //    stream.WriteLine(text);
             //    stream.WriteLine("salam dostlar");
 
-            //}
+            //} 
+            #endregion
 
 
 
@@ -58,13 +60,16 @@ namespace ConsoleApp14
 
 
 
+            string jsonurl = "https://jsonplaceholder.typicode.com/posts";
 
-            //HttpClient client = new HttpClient();
-            //HttpResponseMessage response = await client.GetAsync("https://jsonplaceholder.typicode.com/posts");
-            //string content = await response.Content.ReadAsStringAsync();
-            //List<Post> posts = JsonSerializer.Deserialize<List<Post>>(content);
-            //Console.WriteLine(posts[0].Body);
-         
+            HttpClient url = new HttpClient();
+            string json = url.GetStringAsync(jsonurl).Result;
+            List<Post> posts = JsonSerializer.Deserialize<List<Post>>(json);
+
+            Console.WriteLine(posts[0].Body);
+
+
+
 
 
 
